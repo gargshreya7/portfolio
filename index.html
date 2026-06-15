@@ -3,415 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shreya Garg — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Shreya Garg Portfolio</title>
+
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  :root {
-    --bg: #050508;
-    --surface: #0d0d14;
-    --surface2: #12121c;
-    --border: rgba(255,255,255,0.07);
-    --accent: #7c6af7;
-    --accent2: #c084fc;
-    --accent3: #38bdf8;
-    --text: #f1f0ff;
-    --muted: #8b8aa0;
-    --card: #0f0f1a;
-  }
+body{
+    font-family:Arial, sans-serif;
+    background:#0a0a0a;
+    color:white;
+}
 
-  html { scroll-behavior: smooth; }
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:#111;
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
 
-  /* ── NOISE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
-  }
+nav a{
+    color:white;
+    text-decoration:none;
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 4rem;
-    background: rgba(5,5,8,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700; font-size: 1.2rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: -0.02em;
-  }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none; font-size: 0.85rem;
-    font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    padding: 0.5rem 1.4rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none; border-radius: 100px; color: white;
-    font-size: 0.82rem; font-weight: 600; cursor: pointer;
-    text-decoration: none; letter-spacing: 0.03em;
-    transition: opacity 0.2s, transform 0.2s;
-  }
-  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    padding:50px;
+    flex-wrap:wrap;
+}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center; gap: 4rem;
-    padding: 8rem 4rem 4rem;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -30%; right: -10%;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero::after {
-    content: '';
-    position: absolute; bottom: -20%; left: 20%;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
+.hero-text{
+    max-width:500px;
+}
 
-  .hero-text { position: relative; z-index: 1; }
+.hero-text h1{
+    font-size:60px;
+    margin-bottom:10px;
+}
 
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.35rem 0.9rem;
-    background: rgba(124,106,247,0.12);
-    border: 1px solid rgba(124,106,247,0.3);
-    border-radius: 100px; margin-bottom: 1.8rem;
-    font-size: 0.78rem; font-weight: 600; color: var(--accent2);
-    letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .hero-badge::before { content: '●'; color: #4ade80; font-size: 0.6rem; }
+.hero-text p{
+    margin-bottom:20px;
+    color:#ccc;
+}
 
-  h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    font-weight: 700; line-height: 1.05;
-    letter-spacing: -0.04em; margin-bottom: 0.3rem;
-  }
-  .name-highlight {
-    background: linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--accent3) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .hero-role {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem; color: var(--accent);
-    margin-bottom: 1.5rem; letter-spacing: 0.02em;
-  }
-  .hero-role span { color: var(--muted); }
-  .hero-desc {
-    font-size: 1.05rem; color: var(--muted); max-width: 480px;
-    line-height: 1.7; margin-bottom: 2.5rem;
-  }
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    background:#6c63ff;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    margin-right:10px;
+}
 
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 0.85rem 2rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none; border-radius: 12px; color: white;
-    font-size: 0.92rem; font-weight: 600; cursor: pointer;
-    text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 40px rgba(124,106,247,0.3);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,106,247,0.5); }
-  .btn-secondary {
-    padding: 0.85rem 2rem;
-    background: transparent;
-    border: 1px solid var(--border); border-radius: 12px; color: var(--text);
-    font-size: 0.92rem; font-weight: 500; cursor: pointer;
-    text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-secondary:hover { border-color: var(--accent); background: rgba(124,106,247,0.05); }
+.photo img{
+    width:350px;
+    height:450px;
+    object-fit:cover;
+    border-radius:20px;
+    border:4px solid #6c63ff;
+}
 
-  /* ── HERO PHOTO ── */
-  .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; }
-  .photo-frame {
-    position: relative; width: 380px; height: 460px;
-  }
-  .photo-frame::before {
-    content: '';
-    position: absolute; inset: -2px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
-    border-radius: 28px; z-index: 0;
-    animation: borderGlow 4s ease-in-out infinite alternate;
-  }
-  @keyframes borderGlow {
-    from { opacity: 0.6; }
-    to { opacity: 1; filter: blur(1px); }
-  }
-  .photo-inner {
-    position: relative; z-index: 1;
-    width: 100%; height: 100%;
-    border-radius: 26px; overflow: hidden;
-    background: var(--surface2);
-  }
-  .photo-inner img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
-    display: block;
-  }
+section{
+    padding:80px 50px;
+}
 
-  /* ── STATS STRIP ── */
-  .stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1px; background: var(--border);
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  }
-  .stat-item {
-    background: var(--surface); padding: 2rem;
-    text-align: center;
-  }
-  .stat-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem; font-weight: 700;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.3rem; }
+.card{
+    background:#151515;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+}
 
-  /* ── SECTION ── */
-  section.main-section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
-  .section-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem; color: var(--accent); letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 0.8rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .section-eyebrow::before { content: '//'; opacity: 0.5; }
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700;
-    letter-spacing: -0.03em; margin-bottom: 1rem;
-  }
-  .section-title span {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111;
+}
 
-  /* ── SKILLS ── */
-  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-  .skill-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
-    padding: 1.8rem; transition: border-color 0.3s, transform 0.3s;
-  }
-  .skill-card:hover { border-color: rgba(124,106,247,0.3); transform: translateY(-4px); }
-  .skill-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.8rem; color: #fff; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted);
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-    border-radius: 6px; padding: 0.25rem 0.6rem;
-  }
-
-  /* ── PROJECTS ── */
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
-  .project-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 24px;
-    padding: 2rem; transition: transform 0.3s, border-color 0.3s;
-  }
-  .project-card:hover { transform: translateY(-6px); border-color: var(--accent); }
-  .project-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.7rem; color: #fff; }
-  .project-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
-  .tech-tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-    background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2);
-    color: var(--accent3); border-radius: 6px; padding: 0.25rem 0.65rem; margin-right: 0.4rem;
-  }
-
-  /* ── EDUCATION ── */
-  .timeline { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-  .edu-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
-    padding: 1.8rem 2rem; display: flex; justify-content: space-between; align-items: center;
-    transition: border-color 0.3s;
-  }
-  .edu-card:hover { border-color: var(--accent); }
-  .edu-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; color: #fff; }
-  .edu-school { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
-  .edu-year {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent2);
-    background: rgba(192,132,252,0.1); border: 1px solid rgba(192,132,252,0.2);
-    border-radius: 8px; padding: 0.3rem 0.7rem;
-  }
-
-  /* ── CONTACT ── */
-  .contact-inner {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: 32px;
-    padding: 4rem; text-align: center; margin-top: 2rem;
-  }
-  .contact-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
-  .contact-sub { color: var(--muted); margin-bottom: 2.5rem; }
-  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .contact-link {
-    padding: 0.8rem 1.6rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    color: var(--text); text-decoration: none; font-size: 0.88rem; transition: all 0.2s;
-  }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* ── CURSOR GLOW ── */
-  .cursor-glow {
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%);
-    position: fixed; pointer-events: none; z-index: 1;
-    transform: translate(-50%, -50%);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; gap: 3rem; }
-    .photo-frame { width: 280px; height: 340px; margin: 0 auto; }
-    section.main-section { padding: 4rem 1.5rem; }
-    .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-    .stats { grid-template-columns: 1fr; gap: 10px; }
-    .edu-card { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  }
+@media(max-width:768px){
+.hero-text h1{
+font-size:40px;
+}
+.photo img{
+width:250px;
+height:320px;
+}
+}
 </style>
 </head>
+
 <body>
 
-<div class="cursor-glow" id="cursorGlow"></div>
-
 <nav>
-  <div class="nav-logo">SG.</div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="mailto:shreyagarg033@gmail.com" class="nav-cta">Hire Me</a>
+<h2>Shreya Garg</h2>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
 <section class="hero">
-  <div class="hero-text">
-    <div class="hero-badge">Available for Internships & Opportunities</div>
-    <h1>
-      <span class="name-highlight">Shreya</span><br>
-      <span class="name-highlight">Garg</span>
-    </h1>
-    <p class="hero-role"><span>const </span>role <span>= </span>"MCA Student & Developer"</p>
-    <p class="hero-desc">
-      Building cloud-powered systems and OS-level tools. Passionate about Java, AWS, and low-level programming — turning complex problems into clean solutions.
-    </p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View Projects ↓</a>
-      <a href="mailto:shreyagarg033@gmail.com" class="btn-secondary">Get In Touch →</a>
-    </div>
-  </div>
 
-  <div class="hero-visual">
-    <div class="photo-frame">
-      <div class="photo-inner">
-        <img src="photo.jpeg" alt="Shreya Garg">
-      </div>
-    </div>
-  </div>
-</section>
+<div class="hero-text">
+<h1>Shreya Garg</h1>
+<h3>MCA Student & Developer</h3>
 
-<div class="stats">
-  <div class="stat-item"><div class="stat-num">MCA</div><div class="stat-label">Education</div></div>
-  <div class="stat-item"><div class="stat-num">Java</div><div class="stat-label">Core Focus</div></div>
-  <div class="stat-item"><div class="stat-num">Cloud</div><div class="stat-label">Infrastructure</div></div>
+<p>
+Passionate about Java, AWS, Cloud Computing and System Programming.
+Building practical solutions using modern technologies.
+</p>
+
+<a href="#projects" class="btn">Projects</a>
+
+<a href="mailto:shreyagarg033@gmail.com" class="btn">
+Email Me
+</a>
 </div>
 
-<section id="skills" class="main-section">
-  <div class="section-eyebrow">Expertise</div>
-  <h2 class="section-title">Technical <span>Skills</span></h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-name">Languages</div>
-      <div class="skills-tags"><span class="tag">Java</span><span class="tag">C++</span><span class="tag">SQL</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-name">Cloud & DevOps</div>
-      <div class="skills-tags"><span class="tag">AWS</span><span class="tag">Git & GitHub</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-name">Core CS</div>
-      <div class="skills-tags"><span class="tag">Operating Systems</span><span class="tag">Cloud Architecture</span></div>
-    </div>
-  </div>
+<div class="photo">
+<img src="photo.jpeg" alt="Shreya Garg">
+</div>
+
 </section>
 
-<section id="projects" class="main-section">
-  <div class="section-eyebrow">Work</div>
-  <h2 class="section-title">Featured <span>Projects</span></h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3 class="project-name">Cloud-Powered System</h3>
-      <p class="project-desc">A robust cloud architecture solution built to handle scalable system modules and automated deployment workflows.</p>
-      <span class="tech-tag">Java</span><span class="tech-tag">AWS</span>
-    </div>
-    <div class="project-card">
-      <h3 class="project-name">OS-Level Tool</h3>
-      <p class="project-desc">Low-level utilities optimizing kernel performance parameters and stream processing mechanisms.</p>
-      <span class="tech-tag">C++</span><span class="tech-tag">Operating Systems</span>
-    </div>
-  </div>
+<section id="about">
+<h2>About Me</h2>
+
+<div class="card">
+<p>
+MCA student at JIIT Noida interested in Cloud Computing,
+Java Development, Linux and AWS technologies.
+</p>
+</div>
+
 </section>
 
-<section id="education" class="main-section">
-  <div class="section-eyebrow">Journey</div>
-  <h2 class="section-title">Education & <span>Academic</span></h2>
-  <div class="timeline">
-    <div class="edu-card">
-      <div>
-        <div class="edu-name">Master of Computer Applications (MCA)</div>
-        <div class="edu-school">Postgraduate Program</div>
-      </div>
-      <div class="edu-year">In Progress</div>
-    </div>
-  </div>
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="card">
+<h3>Cloud Monitoring & Alert System</h3>
+<p>
+AWS EC2, CloudWatch and SNS based monitoring system.
+</p>
+</div>
+
+<div class="card">
+<h3>OS Resource Monitoring Tool</h3>
+<p>
+Linux resource monitoring tool developed using C.
+</p>
+</div>
+
 </section>
 
-<section id="contact" class="main-section">
-  <div class="contact-inner">
-    <h2 class="contact-title">Let's Build Something Together</h2>
-    <p class="contact-sub">I am currently looking for internship opportunities. Feel free to reach out!</p>
-    <div class="contact-links">
-      <a href="mailto:shreyagarg033@gmail.com" class="contact-link">shreyagarg033@gmail.com</a>
-    </div>
-  </div>
+<section id="contact">
+<h2>Contact</h2>
+
+<div class="card">
+<p>Email: shreyagarg033@gmail.com</p>
+
+<p>
+GitHub:
+<a href="https://github.com/" target="_blank">
+Open Profile
+</a>
+</p>
+
+<p>
+LinkedIn:
+<a href="https://linkedin.com/" target="_blank">
+Open Profile
+</a>
+</p>
+
+</div>
 </section>
 
-<script>
-  const glow = document.getElementById('cursorGlow');
-  window.addEventListener('mousemove', (e) => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
-</script>
+<footer>
+© 2026 Shreya Garg
+</footer>
 
 </body>
 </html>
