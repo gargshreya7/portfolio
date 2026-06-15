@@ -3,204 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shreya Garg Portfolio</title>
-
+<title>Shreya Garg — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-    font-family:Arial, sans-serif;
-    background:#0a0a0a;
-    color:white;
-}
+  :root {
+    --bg: #050508;
+    --surface: #0d0d14;
+    --surface2: #12121c;
+    --border: rgba(255,255,255,0.07);
+    --accent: #7c6af7;
+    --accent2: #c084fc;
+    --accent3: #38bdf8;
+    --text: #f1f0ff;
+    --muted: #8b8aa0;
+    --card: #0f0f1a;
+  }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 50px;
-    background:#111;
-}
+  html { scroll-behavior: smooth; }
 
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:20px;
-}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
 
-nav a{
-    color:white;
-    text-decoration:none;
-}
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
 
-.hero{
-    min-height:90vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:50px;
-    padding:50px;
-    flex-wrap:wrap;
-}
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(5,5,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    padding: 0.5rem 1.4rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; border-radius: 100px; color: white;
+    font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    text-decoration: none; letter-spacing: 0.03em;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
-.hero-text{
-    max-width:500px;
-}
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 4rem;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -30%; right: -10%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -20%; left: 20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-.hero-text h1{
-    font-size:60px;
-    margin-bottom:10px;
-}
+  .hero-text { position: relative; z-index: 1; }
 
-.hero-text p{
-    margin-bottom:20px;
-    color:#ccc;
-}
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    background: rgba(124,106,247,0.12);
+    border: 1px solid rgba(124,106,247,0.3);
+    border-radius: 100px; margin-bottom: 1.8rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--accent2);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .hero-badge::before { content: '●'; color: #4ade80; font-size: 0.6rem; }
 
-.btn{
-    display:inline-block;
-    padding:12px 25px;
-    background:#6c63ff;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    margin-right:10px;
-}
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -0.04em; margin-bottom: 0.3rem;
+  }
+  .name-highlight {
+    background: linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--accent3) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem; color: var(--accent);
+    margin-bottom: 1.5rem; letter-spacing: 0.02em;
+  }
+  .hero-role span { color: var(--muted); }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--muted); max-width: 480px;
+    line-height: 1.7; margin-bottom: 2.5rem;
+  }
 
-.photo img{
-    width:350px;
-    height:450px;
-    object-fit:cover;
-    border-radius:20px;
-    border:4px solid #6c63ff;
-}
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; border-radius: 12px; color: white;
+    font-size: 0.92rem; font-weight: 600; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 40px rgba(124,106,247,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,106,247,0.5); }
+  .btn-secondary {
+    padding: 0.85rem 2rem;
+    background: transparent;
+    border: 1px solid var(--border); border-radius: 12px; color: var(--text);
+    font-size: 0.92rem; font-weight: 500; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: rgba(124,106,247,0.05); }
 
-section{
-    padding:80px 50px;
-}
+  /* ── HERO PHOTO ── */
+  .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; }
+  .photo-frame {
+    position: relative; width: 380px; height: 460px;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute; inset: -2px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+    border-radius: 28px; z-index: 0;
+    animation: borderGlow 4s ease-in-out infinite alternate;
+  }
+  @keyframes borderGlow {
+    from { opacity: 0.6; }
+    to { opacity: 1; filter: blur(1px); }
+  }
+  .photo-inner {
+    position: relative; z-index: 1;
+    width: 100%; height: 100%;
+    border-radius: 26px; overflow: hidden;
+    background: var(--surface2);
+  }
+  .photo-inner img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    display: block;
+  }
+  .photo-card {
+    position: absolute; bottom: -1.5rem; left: -2rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1rem 1.4rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    min-width: 180px;
+  }
+  .photo-card-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .photo-card-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); }
+  .photo-card-sub { font-size: 0.75rem; color: var(--accent2); }
+  .photo-card2 {
+    position: absolute; top: 1rem; right: -2rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 0.9rem 1.2rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .tech-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(124,106,247,0.12); border: 1px solid rgba(124,106,247,0.25);
+    border-radius: 100px; padding: 0.3rem 0.8rem;
+    font-size: 0.75rem; font-weight: 500; color: var(--accent2);
+    margin: 0.15rem;
+  }
 
-.card{
-    background:#151515;
-    padding:20px;
-    border-radius:10px;
-    margin-top:20px;
-}
-
-footer{
-    text-align:center;
-    padding:20px;
-    background:#111;
-}
-
-@media(max-width:768px){
-.hero-text h1{
-font-size:40px;
-}
-.photo img{
-width:250px;
-height:320px;
-}
-}
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 4rem; gap: 3rem; }
+    .hero-visual { order: -1; }
+    .photo-frame { width: 280px; height: 340px; margin: 0 auto; }
+    .photo-card, .photo-card2 { display: none; }
+  }
 </style>
 </head>
-
 <body>
 
 <nav>
-<h2>Shreya Garg</h2>
-
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+  <div class="nav-logo">SG.</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:shreyagarg033@gmail.com" class="nav-cta">Hire Me</a>
 </nav>
 
 <section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Available for Internships & Opportunities</div>
+    <h1>
+      <span class="name-highlight">Shreya</span><br>
+      <span class="name-highlight">Garg</span>
+    </h1>
+    <p class="hero-role"><span>const </span>role <span>= </span>"MCA Student & Developer"</p>
+    <p class="hero-desc">
+      Building cloud-powered systems and OS-level tools. Passionate about Java, AWS, and low-level programming — turning complex problems into clean solutions.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects ↓</a>
+      <a href="mailto:shreyagarg033@gmail.com" class="btn-secondary">Get In Touch →</a>
+    </div>
+  </div>
 
-<div class="hero-text">
-<h1>Shreya Garg</h1>
-<h3>MCA Student & Developer</h3>
-
-<p>
-Passionate about Java, AWS, Cloud Computing and System Programming.
-Building practical solutions using modern technologies.
-</p>
-
-<a href="#projects" class="btn">Projects</a>
-
-<a href="mailto:shreyagarg033@gmail.com" class="btn">
-Email Me
-</a>
-</div>
-
-<div class="photo">
-<img src="photo.jpeg" alt="Shreya Garg">
-</div>
-
+  <div class="hero-visual">
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <img src="photo.jpeg" alt="Shreya Garg">
+      </div>
+      
+      <div class="photo-card">
+        <div class="photo-card-label">Specialization</div>
+        <div class="photo-card-val">Core Java</div>
+        <div class="photo-card-sub">&amp; Cloud Systems</div>
+      </div>
+      
+      <div class="photo-card2">
+        <span class="tech-pill">AWS</span>
+        <span class="tech-pill">OS</span>
+      </div>
+    </div>
+  </div>
 </section>
-
-<section id="about">
-<h2>About Me</h2>
-
-<div class="card">
-<p>
-MCA student at JIIT Noida interested in Cloud Computing,
-Java Development, Linux and AWS technologies.
-</p>
-</div>
-
-</section>
-
-<section id="projects">
-<h2>Projects</h2>
-
-<div class="card">
-<h3>Cloud Monitoring & Alert System</h3>
-<p>
-AWS EC2, CloudWatch and SNS based monitoring system.
-</p>
-</div>
-
-<div class="card">
-<h3>OS Resource Monitoring Tool</h3>
-<p>
-Linux resource monitoring tool developed using C.
-</p>
-</div>
-
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-
-<div class="card">
-<p>Email: shreyagarg033@gmail.com</p>
-
-<p>
-GitHub:
-<a href="https://github.com/" target="_blank">
-Open Profile
-</a>
-</p>
-
-<p>
-LinkedIn:
-<a href="https://linkedin.com/" target="_blank">
-Open Profile
-</a>
-</p>
-
-</div>
-</section>
-
-<footer>
-© 2026 Shreya Garg
-</footer>
 
 </body>
 </html>
